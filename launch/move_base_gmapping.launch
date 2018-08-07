@@ -1,0 +1,16 @@
+
+<launch>
+  <master auto="start"/>
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <param name="controller_frequency" value="5.0"/>
+    <!--param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" -->
+    <rosparam file="/home/blrpi/ros_catkin_ws/src/move_base_config_gmapping/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="/home/blrpi/ros_catkin_ws/src/move_base_config_gmapping/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="/home/blrpi/ros_catkin_ws/src/move_base_config_gmapping/local_costmap_params.yaml" command="load" />
+    <rosparam file="/home/blrpi/ros_catkin_ws/src/move_base_config_gmapping/global_costmap_params.yaml" command="load" />
+    <rosparam file="/home/blrpi/ros_catkin_ws/src/move_base_config_gmapping/base_local_planner_params.yaml" command="load" /> 
+    <!--param name="recovery_behavior_enabled" value="false" />
+    <param name="clearing_rotation_allowed" value="false" /--> 
+ </node>
+</launch>

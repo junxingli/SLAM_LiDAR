@@ -1,0 +1,41 @@
+###############################
+# base_odom_para.yaml
+###############################
+# 
+# XML config file with all parameters for base_odom node
+#
+# When base_odom node is started manually via rosrun these parameters 
+# should be read into namespace /base_odom_para with the following console command:
+# rosparam load -v ~/ROS-Workspace/src/base_odom/config/base_odom_param.yaml /base_odom_para
+# Otherwise hardcoded defaults from base_odom_node.cpp will be used
+# 
+# Recommended way is to start the node via launchfile base_odom.launch, which reads 
+# parameters before node is started
+
+{
+##########################################
+#/base_odom_para/ticks_per_shaft_turn
+##########################################
+# 
+#ticks_per_shaft_turn: 980,
+##########################################
+#/base_odom_para/encoder_min
+##########################################
+# 
+#encoder_min: -2147483647,
+##########################################
+#/base_odom_para/encoder_max
+##########################################
+# 
+#encoder_max: 2147483647,
+##########################################
+#/base_odom_para/base_width
+##########################################
+# 
+#base_width: 0.337,
+##########################################
+#/base_odom_param/transform_tf
+##########################################
+# 
+transform_tf: true
+}

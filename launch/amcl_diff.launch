@@ -1,0 +1,25 @@
+<launch>
+
+<arg name="map_file" default="/home/blrpi/ros_catkin_ws/src/my_map.yaml"/>
+<node pkg="map_server" type="map_server" name="map_server"
+ args="$(arg map_file)">
+</node>
+
+<node pkg="amcl" type="amcl" name="amcl" output="screen">
+
+  <remap from="scan" to="scan"/>
+  <param name="odom_model_type" value="diff"/>
+  <param name="transform_tolerance" value="0.2" />
+  <param name="gui_publish_rate" value="10.0"/>
+
+  <param name="min_particles" value="5"/>
+  <param name="max_particles" value="30"/>
+
+  <param name="update_min_d" value="0.05"/>
+  <param name="update_min_a" value="0.02"/>
+
+  <param name="global_frame_id" value="map"/>
+  <param name="odom_frame_id" value="odom"/>
+  <param name="base_frame_id" value="base_link"/>
+</node>
+</launch>

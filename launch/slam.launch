@@ -1,0 +1,23 @@
+<launch>
+
+
+<include file="$(find sweep_ros)/launch/sweep2scan.launch" />
+
+<include file="/home/blrpi/ros_catkin_ws/src/launch/base_odometry.launch"/>
+
+<include file="/home/blrpi/ros_catkin_ws/src/launch/gmapping.launch"/>
+
+</launch>
+
+
+
+
+
+
+
+
+
+
+
+
+

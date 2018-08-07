@@ -1,0 +1,14 @@
+<launch>
+  <rosparam
+    command="load"
+    ns="/base_odom_parameters"
+    file="$(find base_odom)/config/base_odom_parameters.yaml"
+  />
+  <node
+    name="base_odom"
+    pkg="base_odom"
+    type="base_odom"
+    required="true"
+    output="screen"
+  />
+</launch>
