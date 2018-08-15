@@ -4,6 +4,9 @@
 <node pkg="map_server" type="map_server" name="map_server"
  args="$(arg map_file)">
 </node>
+ 
+ <!-- The move_base node -->
+ <include file="/home/blrpi/ros_catkin_ws/src/launch/move_base.launch"/>
 
 <node pkg="amcl" type="amcl" name="amcl" output="screen">
 
