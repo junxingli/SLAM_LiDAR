@@ -1,9 +1,13 @@
 <launch>
+   <!-- Run odom and laser node -->
+   <include file="$(find sweep_ros)/launch/sweep2scan.launch" />
+   <include file="/home/blrpi/ros_catkin_ws/src/launch/base_odom.launch"/>
+   
    <!-- Tf between base and laser -->
    <node name="link_laser" pkg="tf" 
          type="static_transform_publisher" 
          args="0.15 0 0.15 0 0 0 base_link laser 50"
-    /> 
+    />
   <!-- Load parameters for base_controller_node -->
   <rosparam
     command="load"
