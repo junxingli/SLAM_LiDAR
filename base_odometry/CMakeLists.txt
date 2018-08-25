@@ -10,6 +10,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   tf
+  serial
   message_generation
   md49_messages
 )
@@ -119,6 +120,7 @@ catkin_package(
 # include_directories(include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
+  ${serial_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
