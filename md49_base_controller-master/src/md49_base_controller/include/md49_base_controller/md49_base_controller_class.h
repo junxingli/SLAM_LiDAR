@@ -39,7 +39,7 @@ public:
      * @param vel_cmd
      */
     void cmd_vel_callback(const geometry_msgs::Twist& vel_cmd){
-       /* // Drive For- or Backward:
+        // Drive For- or Backward:
         if (vel_cmd.linear.x != 0){
             requested_speed_l = 128+(31/0.2*vel_cmd.linear.x);
             requested_speed_r = 128+(31/0.2*vel_cmd.linear.x);
