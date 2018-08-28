@@ -10,7 +10,6 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   tf
-  serial
   message_generation
   md49_messages
 )

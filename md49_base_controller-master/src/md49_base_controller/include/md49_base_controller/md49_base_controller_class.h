@@ -1,7 +1,8 @@
 #ifndef MD49_BASE_CONTROLLER_CLASS_H_
 #define MD49_BASE_CONTROLLER_CLASS_H_
 
-#define TIMEOUT 1000                                                                            /**<  timeout for reading serialport in ms */
+#define TIMEOUT 1000                                                                            
+/**<  timeout for reading serialport in ms */
 
 class BaseController
 {
@@ -53,9 +54,7 @@ public:
         if (vel_cmd.angular.z != 0){
             requested_speed_l = 128 - floor(155*0.337/2*vel_cmd.angular.z);
             requested_speed_r = 128 + floor(155*0.337/2*vel_cmd.angular.z);
-        }*/
-	requested_speed_l = 128 + 170*(vel_cmd.linear.x - 0.337/2*vel_cmd.angular.z);
-	requested_speed_r = 128 + 170*(vel_cmd.linear.x + 0.337/2*vel_cmd.angular.z);
+        }
 
         ROS_INFO("base_controller: Received /cmd_vel message. Requested speed_l=%i, speed_r=%i",requested_speed_l,requested_speed_r);
     }
