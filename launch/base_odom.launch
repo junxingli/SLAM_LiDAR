@@ -2,7 +2,7 @@
   <rosparam
     command="load"
     ns="/base_odom_parameters"
-    file="$(find base_odom)/config/base_odom_parameters.yaml"
+    file="$(find base_odom)/config/base_odom_para.yaml"
   />
   <node
     name="base_odom"
