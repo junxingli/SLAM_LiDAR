@@ -11,7 +11,11 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  geometry_msgs
   tf
+  md49_messages
+  message_generation
+  
 )
 
 ## System dependencies are found with CMake's conventions
@@ -106,7 +110,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES base_odom
-  CATKIN_DEPENDS roscpp rospy std_msg tf
+  CATKIN_DEPENDS roscpp rospy std_msgs tf geometry_msgs message_runtime
 #  DEPENDS system_lib
 )
 
@@ -116,10 +120,7 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-include_directories(
-# include
-  ${catkin_INCLUDE_DIRS}
-)
+include_directories( ${catkin_INCLUDE_DIRS})
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
@@ -135,7 +136,9 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(base_odom src/base_odom_node.cpp)
-
+target_link_libraries(base_odom ${catkin_LIBRARIES})
+add_dependencies(base_odom md49_messages_generate_messages_cpp)
+add_dependencies(base_odom base_odom_EXPORTED_TARGETS)
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use

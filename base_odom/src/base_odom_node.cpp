@@ -1,6 +1,7 @@
 #include <iostream>
-#include <ros/ros.h>
+#include "ros/ros.h"
 #include <geometry_msgs/Vector3.h>
+#include <geometry_msgs/Quaternion.h>
 #include <tf/transform_broadcaster.h>
 #include <nav_msgs/Odometry.h>
 #include <md49_messages/md49_encoders.h>
@@ -19,18 +20,18 @@ double vth;
 double deltaLeft;
 double deltaRight;
 
-void WheelCallback(const md49_messages::md49_encoders::ConstPtr& ticks)
+void WheelCallback(const md49_messages::md49_encoders& ticks)
 {
 	current_time_encoder = ros::Time::now();
-	deltaLeft = ticks->encoder_l - _PreviousLeftEncoderCounts;
-	deltaRight = ticks->encoder_r - _PreviousRightEncoderCounts;
+	deltaLeft = ticks.encoder_l - _PreviousLeftEncoderCounts;
+	deltaRight = ticks.encoder_r - _PreviousRightEncoderCounts;
 
 	vx = deltaLeft * DistancePerCount; // (current_time_encoder - last_time_encoder).toSec();
 	vy = deltaRight * DistancePerCount; // (current_time_encoder - last_time_encoder).toSec();
 	vth=(vx-vy)/0.337; // angle speed Dw: distance between wheel 337mm
 
-	_PreviousLeftEncoderCounts = ticks->encoder_l;
-	_PreviousRightEncoderCounts = ticks->encoder_r;
+	_PreviousLeftEncoderCounts = ticks.encoder_l;
+	_PreviousRightEncoderCounts = ticks.encoder_r;
 	last_time_encoder = current_time_encoder;
 
 }
