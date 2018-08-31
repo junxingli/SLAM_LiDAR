@@ -1,11 +1,13 @@
 <launch>
 
-
-<include file="$(find sweep_ros)/launch/sweep2scan.launch" />
-
-<include file="/home/blrpi/ros_catkin_ws/src/launch/base_odom.launch"/>
+<include file="/home/blrpi/ros_catkin_ws/src/launch/base_controler.launch"/>
 
 <include file="/home/blrpi/ros_catkin_ws/src/launch/gmapping.launch"/>
+
+<include file="/home/blrpi/ros_catkin_ws/src/launch/move_base_gmapping.launch"/>
+
+<include file="/home/blrpi/ros_catkin_ws/src/launch/amcl_movebase.launch"/>
+
 
 </launch>
 
