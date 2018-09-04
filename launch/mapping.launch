@@ -1,0 +1,28 @@
+<launch> 
+  <!-- Load parameters for base_controller_node -->
+  <rosparam
+    command="load"
+    ns="/md49"
+    file="$(find md49_base_controller)/config/md49_defaults.yaml"
+  />
+  <rosparam
+    command="load"
+    ns="/serialport"
+    file="$(find md49_base_controller)/config/serialport_defaults.yaml"
+  />
+
+  <!-- Run base_controller_node -->
+  <node 
+    name="md49_base_controller" 
+    pkg="md49_base_controller"   
+    type="md49_base_controller"
+    required="true"
+    output="screen"
+  />
+  <!-- Run odom and laser node -->
+   <!-- laser node include the laser to base tf-->
+   <include file="/home/blrpi/ros_catkin_ws/src/sweep-ros/launch/sweep2scan.launch" />
+   <include file="/home/blrpi/ros_catkin_ws/src/launch/base_odom.launch"/>
+  <!-- Run gmapping node -->
+<include file="/home/blrpi/ros_catkin_ws/src/launch/gmapping.launch"/>
+</launch>
