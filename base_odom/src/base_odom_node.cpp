@@ -8,7 +8,7 @@
 
 long _PreviousLeftEncoderCounts = 0;
 long _PreviousRightEncoderCounts = 0;
-ros::Time current_time_encoder, last_time_encoder;
+ros::Time current_time, last_time;
 double DistancePerCount = (3.14159265 * 0.125) / 980;  //D :diameter 125mm   p: line-number of encoder 980
 
 double x;
@@ -19,20 +19,27 @@ double vy;
 double vth;
 double deltaLeft;
 double deltaRight;
+double v_left;
+double v_right;
+
 
 void WheelCallback(const md49_messages::md49_encoders& ticks)
 {
 	current_time_encoder = ros::Time::now();
+	//extract the wheel velocities from the tick signals count
 	deltaLeft = ticks.encoder_l - _PreviousLeftEncoderCounts;
 	deltaRight = ticks.encoder_r - _PreviousRightEncoderCounts;
+	
+	 v_left = (deltaLeft * DistancePerCount) / (current_time - last_time).toSec();
+        v_right = (deltaRight * DistancePerCount) / (current_time - last_time).toSec();
 
-	vx = deltaLeft * DistancePerCount; // (current_time_encoder - last_time_encoder).toSec();
-	vy = deltaRight * DistancePerCount; // (current_time_encoder - last_time_encoder).toSec();
-	vth=(vx-vy)/0.337; // angle speed Dw: distance between wheel 337mm
+	vx = ((v_right + v_left) / 2)*10;
+	vy = 0; 
+	vth=((v_right - v_left)/0.337)*10; // angle speed Dw: distance between wheel 337mm
 
 	_PreviousLeftEncoderCounts = ticks.encoder_l;
 	_PreviousRightEncoderCounts = ticks.encoder_r;
-	last_time_encoder = current_time_encoder;
+	last_time = current_time;
 
 }
 
@@ -57,8 +64,8 @@ int main(int argc, char **argv)
 		current_time = ros::Time::now();
 		//compute odometry in a typical way given the velocities of the robot
 		double dt = (current_time - last_time).toSec();
-    		double delta_x = (vx * cos(th) - vy * sin(th)) * dt; //from base link to world
-    		double delta_y = (vx * sin(th) + vy * cos(th)) * dt;
+    		double delta_x = (vx * cos(th)) * dt; //from base link to world
+    		double delta_y = (vx * sin(th) ) * dt;
     		double delta_th = vth * dt;
 
 	    	x += delta_x;
