@@ -25,7 +25,7 @@ double v_right;
 
 void WheelCallback(const md49_messages::md49_encoders& ticks)
 {
-	current_time_encoder = ros::Time::now();
+	current_time = ros::Time::now();
 	//extract the wheel velocities from the tick signals count
 	deltaLeft = ticks.encoder_l - _PreviousLeftEncoderCounts;
 	deltaRight = ticks.encoder_r - _PreviousRightEncoderCounts;

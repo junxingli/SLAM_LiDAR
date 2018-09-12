@@ -271,14 +271,14 @@ public:
         // ***************************************************
         // * Set all values of custom message /md49_encoders *
         // ***************************************************
-        md49_encoders.encoder_l = reply[0] << 24;                   // put together first encoder value
-        md49_encoders.encoder_l |= (reply[1] << 16);
-        md49_encoders.encoder_l |= (reply[2] << 8);
-        md49_encoders.encoder_l |= (reply[3]);
-        md49_encoders.encoder_r = reply[4] << 24;                   // put together second encoder value
-        md49_encoders.encoder_r |= (reply[5] << 16);
-        md49_encoders.encoder_r |= (reply[6] << 8);
-        md49_encoders.encoder_r |= (reply[7]);
+        //md49_encoders.encoder_l = reply[0] << 24;                   // put together first encoder value
+        //md49_encoders.encoder_l |= (reply[1] << 16);
+        //md49_encoders.encoder_l |= (reply[2] << 8);
+        //md49_encoders.encoder_l |= (reply[3]);
+        //md49_encoders.encoder_r = reply[4] << 24;                   // put together second encoder value
+        //md49_encoders.encoder_r |= (reply[5] << 16);
+        //md49_encoders.encoder_r |= (reply[6] << 8);
+        //md49_encoders.encoder_r |= (reply[7]);
         md49_encoders.encoderbyte1l=reply[0];
         md49_encoders.encoderbyte2l=reply[1];
         md49_encoders.encoderbyte3l=reply[2];
@@ -287,6 +287,9 @@ public:
         md49_encoders.encoderbyte2r=reply[5];
         md49_encoders.encoderbyte3r=reply[6];
         md49_encoders.encoderbyte4r=reply[7];
+        md49_encoders.encoder_l= (md49_encoders.encoderbyte3l*256)+md49_encoders.encoderbyte4l;
+        md49_encoders.encoder_r= (md49_encoders.encoderbyte3r*256)+md49_encoders.encoderbyte4r;
+
         
 
 	std::cout << "get_encoders. enc_l " << md49_encoders.encoder_l << " enc_r " << md49_encoders.encoder_r << std::endl;
