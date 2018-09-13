@@ -21,8 +21,8 @@
   />
   <!-- Run odom and laser node -->
    <!-- laser node include the laser to base tf-->
-   <include file="/home/li/catkin_ws/src/SLAM_LiDAR/sweep-ros/launch/sweep2scan.launch" />
-   <include file="/home/li/catkin_ws/src/SLAM_LiDAR/launch/base_odom.launch"/>
+   <include file="/home/li/catkin_ws/src/sweep-ros/launch/sweep2scan.launch" />
+   <include file="/home/li/catkin_ws/src/launch/base_odom.launch"/>
   <!-- Run gmapping node -->
-<include file="/home/li/catkin_ws/src/SLAM_LiDAR/launch/gmapping.launch"/>
+<include file="/home/li/catkin_ws/src/launch/gmapping.launch"/>
 </launch>

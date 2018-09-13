@@ -2,7 +2,7 @@
    <!-- Run odom and laser node -->
    <!-- laser node include the laser to base tf-->
    <include file="$(find sweep_ros)/launch/sweep2scan.launch" />
-   <include file="/home/blrpi/ros_catkin_ws/src/launch/base_odom.launch"/>
+   <include file="/home/li/catkin_ws/src/launch/base_odom.launch"/>
    
   <!-- Load parameters for base_controller_node -->
   <rosparam

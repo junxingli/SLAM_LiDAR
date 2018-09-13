@@ -1,12 +1,12 @@
 <launch>
 
-<arg name="map_file" default="/home/li/catkin_ws/src/SLAM_LiDAR/my_map.yaml"/>
+<arg name="map_file" default="/home/li/catkin_ws/src/my_map.yaml"/>
 <node pkg="map_server" type="map_server" name="map_server"
  args="$(arg map_file)">
 </node>
  
  <!-- The move_base node -->
- <include file="/home/li/catkin_ws/src/SLAM_LiDAR/launch/move_base.launch"/>
+ <include file="/home/li/catkin_ws/src/launch/move_base.launch"/>
 
 <node pkg="amcl" type="amcl" name="amcl" output="screen">
 
