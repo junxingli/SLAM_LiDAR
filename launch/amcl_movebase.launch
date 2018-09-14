@@ -4,7 +4,9 @@
 <node pkg="map_server" type="map_server" name="map_server"
  args="$(arg map_file)">
 </node>
- 
+
+ <!-- node pkg="tf" type="static_transform_publisher" name="map_to_odom" args="0.0 0.0 0.0 0 0 0.0 /map /odom 1000"/ -->
+
  <!-- The move_base node -->
  <include file="/home/li/catkin_ws/src/launch/move_base.launch"/>
 
@@ -13,7 +15,7 @@
   <remap from="scan" to="scan"/>
   <param name="odom_model_type" value="diff"/>
   <param name="transform_tolerance" value="0.2" />
-  <param name="gui_publish_rate" value="10.0"/>
+  <param name="gui_publish_rate" value="2.0"/>
 
   <param name="min_particles" value="5"/>
   <param name="max_particles" value="30"/>

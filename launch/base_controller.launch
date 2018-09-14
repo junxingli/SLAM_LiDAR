@@ -24,5 +24,7 @@
     required="true"
     output="screen"
   />
+  <!-- base link and footprint -->
+   <!--node pkg="tf" type="static_transform_publisher" name="base_link_footprint" args="0 0 -0.06 0.0 0.0 0.0 /base_link /base_footprint  100" /-->
 
 </launch>

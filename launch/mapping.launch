@@ -19,10 +19,16 @@
     required="true"
     output="screen"
   />
+   <!-- base link and footprint -->
+   <node pkg="tf" type="static_transform_publisher" name="base_link_footprint" args="0 0 0.06 0.0 0.0 0.0 /base_footprint /base_link 100" />
+
   <!-- Run odom and laser node -->
    <!-- laser node include the laser to base tf-->
    <include file="/home/li/catkin_ws/src/sweep-ros/launch/sweep2scan.launch" />
    <include file="/home/li/catkin_ws/src/launch/base_odom.launch"/>
-  <!-- Run gmapping node -->
+
+   
+  
+<!-- Run gmapping node -->
 <include file="/home/li/catkin_ws/src/launch/gmapping.launch"/>
 </launch>
