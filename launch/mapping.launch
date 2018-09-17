@@ -20,7 +20,7 @@
     output="screen"
   />
    <!-- base link and footprint -->
-   <node pkg="tf" type="static_transform_publisher" name="base_link_footprint" args="0 0 0.06 0.0 0.0 0.0 /base_footprint /base_link 100" />
+   <!--node pkg="tf" type="static_transform_publisher" name="base_link_footprint" args="0 0 0.06 0.0 0.0 0.0 /base_footprint /base_link 100" / -->
 
   <!-- Run odom and laser node -->
    <!-- laser node include the laser to base tf-->

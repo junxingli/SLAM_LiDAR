@@ -2,7 +2,7 @@ obstacle_range: 1.5 #2.5 lower computational consumption
 raytrace_range: 3.0
 footprint: [[0.3, -0.2], [-0.3,-0.2], [0, 0.3]] #[[0.2, 0], [0,0.17], [0, -0.17]] triangle shape of robot
 #robot_radius: ir_of_robot
-inflation_radius: 0.1 #safe distance 
+inflation_radius: 0.15 #safe distance 
 map_type: costmap
 observation_sources: laser_scan_sensor
 transform_tolerance: 3

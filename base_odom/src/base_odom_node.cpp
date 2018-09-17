@@ -35,24 +35,40 @@ void WheelCallback(const md49_messages::md49_data& ticks)
 	
 	 //v_left = (deltaLeft * DistancePerCount) / (current_time - last_time).toSec();
         //v_right = (deltaRight * DistancePerCount) / (current_time - last_time).toSec();
-         if(abs(ticks.speed_l - templ)<30)
+        std::cout <<"speed_l=" << ticks.speed_l <<'\n'<< "speed_r=" << ticks.speed_r <<'\n';         
+	if(abs(ticks.speed_l - templ)<30 || abs(ticks.speed_l - templ)>220)
 	{
-         v_left= (ticks.speed_l+128)/141.0;
-        templ= ticks.speed_l;
-        }
-	else
-	{
-	v_left = (templ+128)/141.0;
-	}
-        if(abs(ticks.speed_r - tempr)<30)
-	{
-         v_right=(ticks.speed_r+128)/141.0;
-         tempr= ticks.speed_r;
+			if (ticks.speed_l>100)
+			v_left= (ticks.speed_l-128)/142.0;
+			else
+         		v_left= (ticks.speed_l+128)/142.0;
+			templ= ticks.speed_l;
 	}
 	else
 	{
-        v_right=(tempr+128)/141.0;
+	if(templ<0)
+	v_left = (templ+128)/142.0;
+	else
+	v_left = (templ-128)/142.0;
+	}	
+	
+
+	if(abs(ticks.speed_r - tempr)<30 || abs(ticks.speed_r - tempr)>220)
+	{
+			if (ticks.speed_r>100)
+			v_right= (ticks.speed_r-128)/142.0;
+			else
+         		v_right= (ticks.speed_r+128)/142.0;
+			tempr= ticks.speed_r;
 	}
+	else
+	{
+	if(tempr<0)
+	v_right = (tempr+128)/142.0;
+	else
+	v_right = (tempr-128)/142.0;
+	}
+	
 
         std::cout <<"v_left=" << v_left <<'\n'<< "templ=" << templ <<'\n';       
         std::cout <<"v_right=" << v_right <<'\n'<< "tempr=" << tempr <<'\n';
